@@ -33,7 +33,7 @@ This roadmap tracks the skills, labs, and projects I am completing as I continue
 
 ## Projects
 
-- [ ] Hello World
+- [x] Hello World
 - [ ] User Input Script
 - [ ] CSV Import
 - [ ] CSV Export
