@@ -36,3 +36,26 @@ switch ($action.ToLower()) {
     default   { ... }
 }
 ​```
+
+## Arrays
+A collection of items stored in a single variable, accessed by
+index (starting at 0). `Import-Csv` returns an array of objects —
+one object per row. Each object's properties are accessed with
+dot notation.
+​```powershell
+$users = Import-Csv -Path $Path
+$users.Count        # number of rows/items in the array
+$users[0]            # first user object
+$users[0].FirstName  # a specific property on that object
+​```
+
+## Loops
+`foreach` iterates over every item in an array or collection,
+running the same block of code once per item. This is the core
+pattern for processing a batch of records — bulk provisioning,
+account audits, report generation, etc.
+​```powershell
+foreach ($user in $users) {
+    Write-Host "$($user.FirstName) $($user.LastName)"
+}
+​```
