@@ -19,12 +19,12 @@ This roadmap tracks the skills, labs, and projects I am completing as I continue
 
 - [x] Variables
 - [ ] Data Types
-- [ ] Arrays
+- [x] Arrays
 - [ ] Hashtables
 - [x] Operators
 - [x] If / Else
 - [x] Switch
-- [ ] Loops
+- [x] Loops
 - [ ] Functions
 - [ ] Modules
 - [ ] Error Handling
@@ -35,7 +35,7 @@ This roadmap tracks the skills, labs, and projects I am completing as I continue
 
 - [x] Hello World
 - [x] User Input Script
-- [ ] CSV Import
+- [x] CSV Import
 - [ ] CSV Export
 - [ ] Log File Parser
 
