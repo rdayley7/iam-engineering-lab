@@ -99,3 +99,58 @@ the pipeline; only emitted objects do (see Project 04).
 $provisioned | Export-Csv -Path $OutputPath -NoTypeInformation
 $users | Where-Object { $_.Department -eq "IT" }   # $_ = current object
 ```
+
+## Data Types
+PowerShell is loosely typed, but every value still has a type: strings,
+integers, booleans (`$true` / `$false`), arrays, and hashtables. You can
+pin a type with a cast or a `[type]` on a parameter — Project 05 uses
+`[int]$Threshold` so "3" from the command line becomes a real number
+instead of text.
+```powershell
+$name    = "rdayley"     # string
+$count   = 4             # int
+$enabled = $true         # boolean
+$users   = @("a","b")    # array
+[int]"3" + 1             # cast text to a number -> 4
+"3" + 1                  # no cast, the string wins -> "31"
+```
+
+## Functions
+A function packages a block of code under a name so you can reuse it
+instead of repeating yourself. Parameters go in a `param()` block, and
+whatever the function outputs becomes its return value. This is the
+building block for the reusable `Get-…` style commands you'll write
+against Microsoft Graph.
+```powershell
+function Get-Username {
+    param([string]$First, [string]$Last)
+    "$($First.Substring(0,1))$Last".ToLower()
+}
+
+Get-Username -First "Ryan" -Last "Dayley"   # -> rdayley
+```
+
+## Modules
+A module is a packaged collection of cmdlets you load with
+`Import-Module` to add new commands to your session. It's how PowerShell
+ships functionality — and how the Microsoft Graph SDK arrives: install
+it once, then import it to get its cmdlets.
+```powershell
+Install-Module Microsoft.Graph -Scope CurrentUser   # one-time install
+Import-Module Microsoft.Graph                        # load its cmdlets
+Get-Command -Module Microsoft.Graph                  # see what it added
+```
+
+## Error Handling
+Wrap code that can fail in `try` / `catch` so one error doesn't crash the
+whole script. Add `-ErrorAction Stop` to make a cmdlet's error trigger
+the `catch`. Essential for Graph calls, which fail for real reasons —
+throttling, an expired token, or a user that doesn't exist.
+```powershell
+try {
+    $user = Get-MgUser -UserId "missing@contoso.com" -ErrorAction Stop
+}
+catch {
+    Write-Host "Lookup failed: $($_.Exception.Message)" -ForegroundColor Red
+}
+```
