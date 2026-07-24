@@ -59,3 +59,43 @@ foreach ($user in $users) {
     Write-Host "$($user.FirstName) $($user.LastName)"
 }
 ​```
+
+## Hashtables
+A hashtable stores key/value pairs — like a small lookup table.
+Written with `@{ }`. In Project 04, a hashtable literal is the
+shape handed to `[PSCustomObject]` to build each provisioning
+record.
+```powershell
+$user = @{
+    FirstName = "Ryan"
+    LastName  = "Dayley"
+}
+$user["FirstName"]   # look up a value by key -> Ryan
+$user.LastName       # dot notation works too  -> Dayley
+```
+
+## Objects
+Almost everything in PowerShell is an object: a bundle of properties
+(data) and methods (actions). `[PSCustomObject]` turns a hashtable
+of properties into your own object — the clean way to assemble a
+record before exporting it. Used in Project 04 to shape each user
+into a provisioning record.
+```powershell
+$record = [PSCustomObject]@{
+    DisplayName    = "Ryan Dayley"
+    SamAccountName = "rdayley"
+    AccountEnabled = $true
+}
+$record.SamAccountName   # access a property -> rdayley
+```
+
+## Pipeline
+The pipe `|` sends the objects coming out of one command straight
+into the next, without temporary variables. It's what makes
+`... | Export-Csv` and `... | Where-Object` work. Note that
+`Write-Host` prints to the console only — it does NOT travel down
+the pipeline; only emitted objects do (see Project 04).
+```powershell
+$provisioned | Export-Csv -Path $OutputPath -NoTypeInformation
+$users | Where-Object { $_.Department -eq "IT" }   # $_ = current object
+```
