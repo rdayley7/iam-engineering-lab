@@ -20,7 +20,7 @@ This roadmap tracks the skills, labs, and projects I am completing as I continue
 - [x] Variables
 - [ ] Data Types
 - [x] Arrays
-- [ ] Hashtables
+- [x] Hashtables
 - [x] Operators
 - [x] If / Else
 - [x] Switch
@@ -28,15 +28,15 @@ This roadmap tracks the skills, labs, and projects I am completing as I continue
 - [ ] Functions
 - [ ] Modules
 - [ ] Error Handling
-- [ ] Pipeline
-- [ ] Objects
+- [x] Pipeline
+- [x] Objects
 
 ## Projects
 
 - [x] Hello World
 - [x] User Input Script
 - [x] CSV Import
-- [ ] CSV Export
+- [x] CSV Export
 - [ ] Log File Parser
 
 ---
