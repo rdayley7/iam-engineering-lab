@@ -18,16 +18,16 @@ This roadmap tracks the skills, labs, and projects I am completing as I continue
 ## Fundamentals
 
 - [x] Variables
-- [ ] Data Types
+- [x] Data Types
 - [x] Arrays
 - [x] Hashtables
 - [x] Operators
 - [x] If / Else
 - [x] Switch
 - [x] Loops
-- [ ] Functions
-- [ ] Modules
-- [ ] Error Handling
+- [x] Functions
+- [x] Modules
+- [x] Error Handling
 - [x] Pipeline
 - [x] Objects
 
