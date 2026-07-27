@@ -10,6 +10,8 @@ __pycache__/
 
 # Logs
 *.log
+# ...but keep the sample log Project 05 (log parser) reads
+!01-powershell/exercises/05-log-file-parser/auth.log
 
 # Environment files
 .env
